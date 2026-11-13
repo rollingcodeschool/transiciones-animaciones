@@ -1,0 +1,234 @@
+/* Configuración general de tipografía y fondo */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+
+/* Estilo personalizado para los encabezados Hero */
+.hero-header {
+  background: linear-gradient(135deg, #090641 0%, #173b88 100%);
+  color: white;
+  border-bottom-left-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
+
+/* Estilo para los bloques de código <pre><code> */
+pre {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  font-family: "Fira Code", monospace;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  overflow-x: auto;
+  border: 1px solid #334155;
+}
+
+/* Contenedor de demostración dentro de cada tarjeta */
+.demo-stage {
+  min-height: 150px;
+  background-color: #f1f5f9;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  border: 1px dashed #cbd5e1;
+}
+
+/* ===================================================================
+           SECCIÓN 1: TRANSICIONES SENCILLAS (Requieren un disparador :hover)
+           =================================================================== */
+
+/* 1.1 Elevación suave (Lift & Shadow) */
+.efecto-elevacion {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  /* Indicamos qué propiedades van a cambiar y en cuánto tiempo */
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.efecto-elevacion:hover {
+  /* Sube 6 píxeles en el eje Y y proyecta una sombra suave */
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.12);
+}
+
+/* 1.2 Zoom suave en imagen o contenedor */
+.contenedor-zoom {
+  width: 100%;
+  max-width: 240px;
+  height: 110px;
+  border-radius: 0.75rem;
+  /* CLAVE: Evita que la imagen se salga de su caja al crecer */
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.contenedor-zoom img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.contenedor-zoom:hover img {
+  /* Agranda la imagen un 8% suavemente */
+  transform: scale(1.08);
+}
+
+/* 1.3 Cambio de color y deslizamiento en botón */
+.btn-deslizar {
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+.btn-deslizar:hover {
+  background-color: #3730a3;
+  /* Desplaza ligeramente el botón a la derecha */
+  transform: translateX(4px);
+  color: #ffffff;
+}
+/* Bonus: la flechita interna también se mueve un poco más */
+.btn-deslizar i {
+  transition: transform 0.3s ease;
+}
+.btn-deslizar:hover i {
+  transform: translateX(4px);
+}
+
+/* 1.4 Subrayado animado desde el centro */
+.enlace-subrayado {
+  position: relative;
+  color: #1e293b;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding-bottom: 4px;
+}
+/* Creamos una línea invisible debajo del texto con ::after */
+.enlace-subrayado::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #4f46e5;
+  border-radius: 2px;
+  /* Escala horizontal en 0 (invisible) desde el centro */
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+.enlace-subrayado:hover {
+  color: #4f46e5;
+}
+.enlace-subrayado:hover::after {
+  /* Al pasar el mouse, la línea se expande al 100% */
+  transform: scaleX(1);
+}
+
+/* ===================================================================
+           SECCIÓN 2: ANIMACIONES CON @KEYFRAMES (Automáticas o en bucle)
+           =================================================================== */
+
+.color-purple {
+  color: #4f46e5;
+}
+
+/* 2.1 Pulso / Latido infinito */
+@keyframes latido {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+.anim-pulso {
+  /* Nombre | Duración | Curva | Repetición */
+  animation: latido 2s ease-in-out infinite;
+}
+
+.box-demo-stage {
+  width: 64px;
+  height: 64px;
+}
+.pointer {
+  cursor: pointer;
+}
+/* 2.2 Flotación suave */
+@keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+.anim-flotar {
+  animation: flotar 3s ease-in-out infinite;
+}
+
+/* 2.3 Entrada gradual (Fade In Up) */
+.fade-in-up {
+  font-size: 0.75rem;
+}
+@keyframes aparecerArriba {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Se ejecuta 1 vez al cargar la página */
+.anim-entrada {
+  animation: aparecerArriba 0.8s ease-out forwards;
+  
+}
+/* Truco CSS puro: Al pasar el mouse sobre el escenario, reiniciamos la animación */
+.demo-stage-entrada:hover .anim-entrada {
+  animation: none; /* Resetea momentáneamente */
+}
+.demo-stage-entrada:active .anim-entrada {
+  animation: aparecerArriba 0.7s ease-out forwards;
+}
+
+/* 2.4 Rotación continua suave */
+.text-rotar {
+  font-size: 3rem;
+}
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.anim-rotar {
+  /* 'linear' evita que frene o acelere en cada vuelta */
+  animation: girar 2.5s linear infinite;
+}

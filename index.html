@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Guía Visual: Transiciones y Animaciones en CSS + Bootstrap 5.3
+    </title>
+
+    <!-- 1. Enlace a Bootstrap 5.3 vía CDN (Solo CSS) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- 2. Enlace a Bootstrap Icons vía CDN para decorar los ejemplos -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+
+    <!-- 3. Fuente Google Fonts 'Inter' y 'Fira Code' para bloques de código -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- =====================================================================
+         ENCABEZADO / HERO SECTION         ===================================================================== -->
+    <header class="hero-header py-5 mb-5 shadow-sm">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-9">
+            <span
+              class="badge bg-light text-primary fw-semibold px-3 py-2 rounded-pill mb-3"
+            >
+              <i class="bi bi-code-slash me-1"></i> Recurso Didáctico • HTML5 +
+              CSS3 + Bootstrap 5.3
+            </span>
+            <h1 class="display-5 fw-bold mb-3">
+              Guía Visual: Transiciones y Animaciones en CSS
+            </h1>
+            <p class="lead opacity-90 mb-4">
+              Aprende a darle vida e interactividad profesional a tus páginas
+              web utilizando únicamente hojas de estilo, sin necesidad de
+              JavaScript.
+            </p>
+          </div>
+        </div>
+
+        <!-- Cuadro comparativo pedagógico: Transition vs Animation -->
+        <div class="row g-3 justify-content-center mt-2">
+          <div class="col-md-5">
+            <div
+              class="bg-white bg-opacity-10 border border-white border-opacity-25 rounded-4 p-3 h-100"
+            >
+              <h2 class="h5 fw-bold mb-2">
+                <i class="bi bi-cursor-fill me-2 text-warning"></i>1.
+                Transiciones (<code>transition</code>)
+              </h2>
+              <p class="small mb-0 opacity-90">
+                Suavizan el cambio entre un estado inicial (A) y un estado final
+                (B). <strong>Necesitan un disparador</strong> para activarse,
+                como pasar el mouse por encima (<code>:hover</code>) o hacer
+                clic (<code>:focus</code>).
+              </p>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div
+              class="bg-white bg-opacity-10 border border-white border-opacity-25 rounded-4 p-3 h-100"
+            >
+              <h2 class="h5 fw-bold mb-2">
+                <i class="bi bi-film me-2 text-info"></i>2. Animaciones
+                (<code>@keyframes</code>)
+              </h2>
+              <p class="small mb-0 opacity-90">
+                Permiten crear secuencias de movimiento con múltiples pasos.
+                <strong>Funcionan de forma automática</strong> apenas carga la
+                página y pueden repetirse en bucle infinito
+                (<code>infinite</code>).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="container pb-5">
+      <!-- =================================================================
+             SECCIÓN 1: TRANSICIONES SENCILLAS (transition + :hover)
+             ================================================================= -->
+      <section class="mb-5">
+        <div
+          class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4 border-bottom pb-3"
+        >
+          <div>
+            <span
+              class="text-primary fw-bold text-uppercase small tracking-wide"
+              >Parte 1 • Interactividad con el mouse</span
+            >
+            <h2 class="h3 fw-bold mb-0">
+              Transiciones Sencillas (<code>transition</code> +
+              <code>:hover</code>)
+            </h2>
+          </div>
+          <span
+            class="badge bg-primary-subtle text-primary border border-primary-subtle rounded-pill px-3 py-2"
+          >
+            <i class="bi bi-mouse me-1"></i> Pasa el cursor sobre cada caja gris
+          </span>
+        </div>
+
+        <div class="row g-4">
+          <!-- TARJETA 1.1: Elevación suave -->
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <h3 class="h5 fw-bold text-dark mb-0">
+                    1. Elevación Suave (Lift &amp; Shadow)
+                  </h3>
+                  <span class="badge bg-light text-secondary border"
+                    >Cards / Productos</span
+                  >
+                </div>
+                <p class="text-muted small mb-3">
+                  Ideal para tarjetas de productos o artículos. Eleva el
+                  elemento unos píxeles y aumenta su sombra al pasar el cursor.
+                </p>
+
+                <!-- Escenario interactivo -->
+                <div class="demo-stage mb-3">
+                  <div class="efecto-elevacion text-center">
+                    <i class="bi bi-layers text-primary fs-3 d-block mb-1"></i>
+                    <span class="fw-semibold small">Pasa el mouse aquí</span>
+                  </div>
+                </div>
+
+                <!-- Bloque de código CSS listo para copiar -->
+                <div class="mt-auto">
+                  <div class="small text-muted fw-semibold mb-1">
+                    <i class="bi bi-filetype-css me-1"></i>Código CSS:
+                  </div>
+                  <pre><code>.tarjeta-elevacion {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-elevacion:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA 1.2: Zoom suave en imagen -->
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <h3 class="h5 fw-bold text-dark mb-0">
+                    2. Zoom Suave en Contenedor
+                  </h3>
+                  <span class="badge bg-light text-secondary border"
+                    >Galerías / Banners</span
+                  >
+                </div>
+                <p class="text-muted small mb-3">
+                  Agranda la imagen sin deformar el diseño gracias a
+                  <code>overflow: hidden</code> en la caja contenedora.
+                </p>
+
+                <!-- Escenario interactivo -->
+                <div class="demo-stage mb-3">
+                  <div class="contenedor-zoom shadow-sm">
+                    <img
+                      src="https://placehold.co/400x220/4f46e5/ffffff?text=Pasa+el+Mouse+(Zoom)"
+                      alt="Ejemplo de zoom en imagen"
+                      onerror="
+                        this.src =
+                          'https://placehold.co/400x220/334155/ffffff?text=Imagen+Demo'
+                      "
+                    />
+                  </div>
+                </div>
+
+                <!-- Bloque de código CSS listo para copiar -->
+                <div class="mt-auto">
+                  <div class="small text-muted fw-semibold mb-1">
+                    <i class="bi bi-filetype-css me-1"></i>Código CSS:
+                  </div>
+                  <pre><code>.caja-imagen {
+  overflow: hidden; /* Recorta lo que sobresale */
+  border-radius: 12px;
+}
+.caja-imagen img {
+  transition: transform 0.4s ease;
+}
+.caja-imagen:hover img {
+  transform: scale(1.08);
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA 1.3: Cambio de color y deslizamiento en botón -->
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <h3 class="h5 fw-bold text-dark mb-0">
+                    3. Botón con Deslizamiento
+                  </h3>
+                  <span class="badge bg-light text-secondary border"
+                    >Botones CTA</span
+                  >
+                </div>
+                <p class="text-muted small mb-3">
+                  Combina un cambio de color de fondo con un ligero
+                  desplazamiento horizontal para invitar al clic.
+                </p>
+
+                <!-- Escenario interactivo -->
+                <div class="demo-stage mb-3">
+                  <button type="button" class="btn-deslizar shadow-sm">
+                    <span>Explorar proyecto</span>
+                    <i class="bi bi-arrow-right"></i>
+                  </button>
+                </div>
+
+                <!-- Bloque de código CSS listo para copiar -->
+                <div class="mt-auto">
+                  <div class="small text-muted fw-semibold mb-1">
+                    <i class="bi bi-filetype-css me-1"></i>Código CSS:
+                  </div>
+                  <pre><code>.btn-deslizar {
+  background-color: #4f46e5;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-deslizar:hover {
+  background-color: #3730a3;
+  transform: translateX(4px);
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA 1.4: Subrayado animado desde el centro -->
+          <div class="col-md-6">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <h3 class="h5 fw-bold text-dark mb-0">
+                    4. Subrayado desde el Centro
+                  </h3>
+                  <span class="badge bg-light text-secondary border"
+                    >Menús / Links</span
+                  >
+                </div>
+                <p class="text-muted small mb-3">
+                  Usa el pseudo-elemento <code>::after</code> y
+                  <code>scaleX()</code> para dibujar una línea elegante en
+                  enlaces de navegación.
+                </p>
+
+                <!-- Escenario interactivo -->
+                <div class="demo-stage mb-3">
+                  <a
+                    href="#subrayado"
+                    onclick="return false;"
+                    class="enlace-subrayado"
+                  >
+                    Enlace de Navegación
+                  </a>
+                </div>
+
+                <!-- Bloque de código CSS listo para copiar -->
+                <div class="mt-auto">
+                  <div class="small text-muted fw-semibold mb-1">
+                    <i class="bi bi-filetype-css me-1"></i>Código CSS:
+                  </div>
+                  <pre><code>.enlace { position: relative; text-decoration: none; }
+.enlace::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 100%; height: 3px; background: #4f46e5;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.enlace:hover::after { transform: scaleX(1); }</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             SECCIÓN 2: ANIMACIONES CON @KEYFRAMES
+             ================================================================= -->
+      <section class="mb-5">
+        <div
+          class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4 border-bottom pb-3"
+        >
+          <div>
+            <span class="text-indigo fw-bold text-uppercase small color-purple"
+              >Parte 2 • Movimiento continuo y de entrada</span
+            >
+            <h2 class="h3 fw-bold mb-0">
+              Animaciones con <code>@keyframes</code> y <code>animation</code>
+            </h2>
+          </div>
+          <span
+            class="badge bg-success-subtle text-success border border-success-subtle rounded-pill px-3 py-2"
+          >
+            <i class="bi bi-play-circle-fill me-1"></i> Se reproducen solas
+          </span>
+        </div>
+
+        <div class="row g-4">
+          <!-- TARJETA 2.1: Pulso / Latido -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-bold text-dark mb-1">1. Pulso / Latido</h3>
+                <p class="text-muted small mb-3">
+                  Llama la atención en ofertas, notificaciones o botones
+                  principales.
+                </p>
+
+                <div class="demo-stage mb-3">
+                  <span
+                    class="badge bg-danger fs-6 px-3 py-2 rounded-pill shadow-sm anim-pulso"
+                  >
+                    <i class="bi bi-lightning-fill me-1"></i> ¡Oferta Hoy!
+                  </span>
+                </div>
+
+                <div class="mt-auto">
+                  <pre><code>@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+
+.anim-pulso {
+  animation: latido 2s ease-in-out infinite;
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA 2.2: Flotación suave -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-bold text-dark mb-1">2. Flotación Suave</h3>
+                <p class="text-muted small mb-3">
+                  Da sensación de ingravidez a íconos, logos o ilustraciones.
+                </p>
+
+                <div class="demo-stage mb-3">
+                  <div
+                    class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center shadow anim-flotar box-demo-stage"
+                  >
+                    <i class="bi bi-rocket-takeoff-fill fs-3"></i>
+                  </div>
+                </div>
+
+                <div class="mt-auto">
+                  <pre><code>@keyframes flotar {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.anim-flotar {
+  animation: flotar 3s ease-in-out infinite;
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA 2.3: Entrada gradual (Fade In Up) -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-bold text-dark mb-1">3. Entrada Gradual</h3>
+                <p class="text-muted small mb-3">
+                  Ideal para títulos al cargar la web.
+                  <em>(Mantén clic aquí para repetir).</em>
+                </p>
+
+                <div
+                  class="demo-stage demo-stage-entrada mb-3 pointer"
+                  title="Mantén presionado el clic para ver el reinicio"
+                >
+                  <div
+                    class="bg-white border rounded-3 px-3 py-2 shadow-sm text-center anim-entrada"
+                  >
+                    <span class="fw-bold text-primary d-block small"
+                      >¡Bienvenido!</span
+                    >
+                    <span class="text-muted fade-in-up">Fade In Up</span>
+                  </div>
+                </div>
+
+                <div class="mt-auto">
+                  <pre><code>@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.entrada {
+  animation: aparecer 0.8s ease-out forwards;
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TARJETA 2.4: Rotación continua -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card h-100 border-0 shadow-sm rounded-4">
+              <div class="card-body d-flex flex-column p-4">
+                <h3 class="h6 fw-bold text-dark mb-1">4. Rotación Continua</h3>
+                <p class="text-muted small mb-3">
+                  Útil para indicadores de carga (loaders) o engranajes
+                  decorativos.
+                </p>
+
+                <div class="demo-stage mb-3">
+                  <i
+                    class="bi bi-gear-fill text-secondary anim-rotar text-rotar"
+                  ></i>
+                </div>
+
+                <div class="mt-auto">
+                  <pre><code>@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.anim-rotar {
+  animation: girar 2.5s linear infinite;
+}</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+             SECCIÓN 3: TIPS CLAVE PARA PRINCIPIANTES
+             ================================================================= -->
+      <section>
+        <div class="card border-0 shadow-sm rounded-4 bg-white overflow-hidden">
+          <div class="card-header bg-dark text-white py-3 px-4">
+            <h2 class="h5 fw-bold mb-0">
+              <i class="bi bi-lightbulb-fill text-warning me-2"></i>3 Reglas de
+              Oro para tus Proyectos con CSS y Bootstrap
+            </h2>
+          </div>
+          <div class="card-body p-4">
+            <div class="row g-4">
+              <!-- Tip 1 -->
+              <div class="col-md-4">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                  <div class="d-flex align-items-center mb-2">
+                    <span class="badge bg-primary rounded-circle me-2">1</span>
+                    <h3 class="h6 fw-bold mb-0">
+                      Evita <code>transition: all</code>
+                    </h3>
+                  </div>
+                  <p class="small text-muted mb-2">
+                    Escribir <code>transition: all 0.3s ease;</code> parece
+                    cómodo, pero obliga al navegador a vigilar decenas de
+                    propiedades innecesarias y puede chocar con estilos propios
+                    de Bootstrap.
+                  </p>
+                  <p class="small mb-0 fw-semibold text-success">
+                    <i class="bi bi-check-circle-fill me-1"></i>Mejor especifica
+                    qué animas:
+                    <code
+                      >transition: transform 0.3s ease, background-color 0.3s
+                      ease;</code
+                    >
+                  </p>
+                </div>
+              </div>
+
+              <!-- Tip 2 -->
+              <div class="col-md-4">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                  <div class="d-flex align-items-center mb-2">
+                    <span class="badge bg-primary rounded-circle me-2">2</span>
+                    <h3 class="h6 fw-bold mb-0">
+                      No olvides <code>overflow: hidden</code>
+                    </h3>
+                  </div>
+                  <p class="small text-muted mb-2">
+                    Si aplicas <code>transform: scale(1.1)</code> a una imagen
+                    dentro de una <code>.card</code> de Bootstrap y no pones
+                    <code>overflow: hidden</code> en su contenedor padre, la
+                    imagen tapará los bordes redondeados.
+                  </p>
+                  <p class="small mb-0 fw-semibold text-primary">
+                    <i class="bi bi-info-circle-fill me-1"></i>Tip Bootstrap:
+                    También puedes usar la clase utilitaria
+                    <code>overflow-hidden</code> directamente en el HTML.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Tip 3 -->
+              <div class="col-md-4">
+                <div class="p-3 rounded-3 bg-light h-100 border">
+                  <div class="d-flex align-items-center mb-2">
+                    <span class="badge bg-primary rounded-circle me-2">3</span>
+                    <h3 class="h6 fw-bold mb-0">
+                      Prioriza <code>transform</code> y <code>opacity</code>
+                    </h3>
+                  </div>
+                  <p class="small text-muted mb-2">
+                    Para mover elementos, usa
+                    <code>transform: translateY()</code> en lugar de animar
+                    <code>margin-top</code> o <code>top</code>. El navegador
+                    acelera <code>transform</code> y <code>opacity</code> usando
+                    la tarjeta gráfica (GPU).
+                  </p>
+                  <p class="small mb-0 fw-semibold text-success">
+                    <i class="bi bi-speedometer2 me-1"></i>Resultado:
+                    Animaciones fluidas a 60 FPS incluso en celulares.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="text-center text-light py-4 border-top bg-black mt-4">
+      <div class="container">
+        <p class="small">
+          Practica de transiciones y animaciones • Construido con
+          <strong>HTML5</strong>, <strong>CSS3</strong> y
+          <strong>Bootstrap 5.3</strong>.
+        </p>
+        <p class="small mb-0">&copy; Todos los derechos reservados</p>
+      </div>
+    </footer>
+  </body>
+</html>
